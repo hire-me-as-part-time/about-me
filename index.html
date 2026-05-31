@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christian - Data Entry Specialist</title>
+    <title>Christian - Virtual Assistant</title>
     <style>
         * {
             margin: 0;
@@ -96,8 +96,42 @@
             transform: translateY(-1px);
         }
 
-        .download-icon {
-            font-size: 1.1em;
+        /* Role Tabs */
+        .role-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .role-tab {
+            padding: 12px 24px;
+            border: 2px solid rgba(83, 52, 131, 0.3);
+            background: rgba(255, 255, 255, 0.6);
+            color: #0f3460;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .role-tab:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #533483;
+        }
+
+        .role-tab.active {
+            background: linear-gradient(135deg, #533483 0%, #0f3460 100%);
+            color: white;
+            border-color: #533483;
+            box-shadow: 0 6px 20px rgba(83, 52, 131, 0.3);
         }
 
         /* Main Content */
@@ -107,6 +141,17 @@
 
         .section {
             margin-bottom: 40px;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .section h2 {
@@ -310,6 +355,15 @@
             .header {
                 padding: 40px 20px;
             }
+
+            .role-tabs {
+                padding: 15px;
+            }
+
+            .role-tab {
+                padding: 10px 18px;
+                font-size: 0.85em;
+            }
         }
 
         @media (max-width: 600px) {
@@ -342,6 +396,14 @@
             .cert-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .role-tabs {
+                flex-direction: column;
+            }
+
+            .role-tab {
+                width: 100%;
+            }
         }
 
         @media print {
@@ -356,7 +418,7 @@
                 max-width: 100%;
             }
 
-            .download-buttons {
+            .download-buttons, .role-tabs {
                 display: none;
             }
 
@@ -367,6 +429,10 @@
             .footer {
                 background: #0f3460;
             }
+
+            .section {
+                display: block !important;
+            }
         }
     </style>
 </head>
@@ -376,116 +442,319 @@
         <div class="header">
             <div class="download-buttons">
                 <button class="download-btn" onclick="downloadPortfolio()">
-                    <span class="download-icon">🎨</span>
+                    <span>🎨</span>
                     Portfolio
                 </button>
-                <a href="resume.html" class="download-btn" target="_blank">
-                    <span class="download-icon">📄</span>
-                    ATS Resume
-                </a>
+                <button class="download-btn" onclick="downloadResume()">
+                    <span>📄</span>
+                    Download
+                </button>
             </div>
             <h1>Christian</h1>
-            <p>Data Entry Specialist | MS Excel Advanced (2016-2021)</p>
+            <p>Virtual Assistant | Data Entry Specialist | MS Excel Expert</p>
         </div>
 
-        <!-- Main Content -->
+        <!-- Role Selection Tabs -->
         <div class="content">
-            <!-- About Section -->
-            <section class="section">
-                <h2>About Me</h2>
-                <p class="about-text">
-                    Dedicated data entry professional with advanced expertise in Microsoft Excel (2016-2021). I specialize in accurate data management, complex spreadsheet design, and process optimization. With a proven track record of 99.9% accuracy and 70+ WPM typing speed, I deliver efficient and reliable data entry solutions with attention to detail and quality assurance.
-                </p>
-            </section>
+            <div class="role-tabs">
+                <button class="role-tab active" onclick="switchRole('general')">📋 General</button>
+                <button class="role-tab" onclick="switchRole('dataentry')">📊 Data Entry Specialist</button>
+                <button class="role-tab" onclick="switchRole('excel')">📈 MS Excel Specialist</button>
+            </div>
 
-            <!-- Key Expertise -->
-            <section class="section">
-                <h2>Key Expertise</h2>
-                <div class="expertise-highlights">
-                    <div class="highlight-box">
-                        <h3>Data Entry</h3>
-                        <p>Fast & accurate data input with 99.9% accuracy</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h3>Excel Mastery</h3>
-                        <p>Advanced formulas, pivot tables & VBA automation</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h3>Database Management</h3>
-                        <p>Data validation & quality assurance</p>
-                    </div>
-                    <div class="highlight-box">
-                        <h3>Reporting</h3>
-                        <p>Professional reports & data visualization</p>
-                    </div>
-                </div>
-            </section>
+            <!-- GENERAL ROLE -->
+            <div id="general-role">
+                <!-- About Section -->
+                <section class="section active">
+                    <h2>About Me</h2>
+                    <p class="about-text">
+                        Versatile Virtual Assistant and data management professional with comprehensive expertise in Microsoft Excel (2016-2021), advanced data entry, and administrative support. Proven track record of 99.9% accuracy with 70+ WPM typing speed. Skilled in spreadsheet design, VBA macro programming, database management, and process optimization. Dedicated to delivering efficient, high-quality support solutions.
+                    </p>
+                </section>
 
-            <!-- Skills Section -->
-            <section class="section">
-                <h2>Professional Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3>Excel Advanced</h3>
-                        <ul class="skill-list">
-                            <li>MS Excel 2016, 2019, 2021</li>
-                            <li>VLOOKUP & INDEX-MATCH formulas</li>
-                            <li>Pivot Tables & Data Analysis</li>
-                            <li>VBA Macro Programming</li>
-                            <li>Complex Spreadsheet Design</li>
-                            <li>Data Validation & Cleaning</li>
-                        </ul>
+                <!-- Key Expertise -->
+                <section class="section active">
+                    <h2>Key Expertise</h2>
+                    <div class="expertise-highlights">
+                        <div class="highlight-box">
+                            <h3>Data Entry</h3>
+                            <p>Fast & accurate data input with 99.9% accuracy</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Excel Mastery</h3>
+                            <p>Advanced formulas, pivot tables & VBA automation</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Administrative Support</h3>
+                            <p>Document management & process optimization</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Reporting</h3>
+                            <p>Professional reports & data visualization</p>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <h3>Data Management</h3>
-                        <ul class="skill-list">
-                            <li>Rapid Data Entry (70+ WPM)</li>
-                            <li>Database Organization</li>
-                            <li>Quality Assurance</li>
-                            <li>Error Detection & Correction</li>
-                            <li>Process Optimization</li>
-                            <li>Data Integrity Verification</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3>Office Suite</h3>
-                        <ul class="skill-list">
-                            <li>Microsoft Word</li>
-                            <li>Microsoft PowerPoint</li>
-                            <li>Google Sheets</li>
-                            <li>Data Reporting</li>
-                            <li>Document Management</li>
-                            <li>Advanced Formatting</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Certifications & Achievements -->
-            <section class="section">
-                <h2>Certifications & Achievements</h2>
-                <div class="cert-grid">
-                    <div class="cert-card">
-                        <div class="cert-value">70+</div>
-                        <div class="cert-label">WPM Typing Speed</div>
+                <!-- Skills Section -->
+                <section class="section active">
+                    <h2>Professional Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Excel Advanced</h3>
+                            <ul class="skill-list">
+                                <li>MS Excel 2016, 2019, 2021</li>
+                                <li>VLOOKUP & INDEX-MATCH formulas</li>
+                                <li>Pivot Tables & Data Analysis</li>
+                                <li>VBA Macro Programming</li>
+                                <li>Complex Spreadsheet Design</li>
+                                <li>Data Validation & Cleaning</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Data Management</h3>
+                            <ul class="skill-list">
+                                <li>Rapid Data Entry (70+ WPM)</li>
+                                <li>Database Organization</li>
+                                <li>Quality Assurance</li>
+                                <li>Error Detection & Correction</li>
+                                <li>Process Optimization</li>
+                                <li>Data Integrity Verification</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Administrative Support</h3>
+                            <ul class="skill-list">
+                                <li>Microsoft Word</li>
+                                <li>Microsoft PowerPoint</li>
+                                <li>Google Sheets</li>
+                                <li>Data Reporting</li>
+                                <li>Document Management</li>
+                                <li>Advanced Formatting</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="cert-card">
-                        <div class="cert-value">99.9%</div>
-                        <div class="cert-label">Data Accuracy</div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section active">
+                    <h2>Certifications & Achievements</h2>
+                    <div class="cert-grid">
+                        <div class="cert-card">
+                            <div class="cert-value">70+</div>
+                            <div class="cert-label">WPM Typing Speed</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">99.9%</div>
+                            <div class="cert-label">Data Accuracy</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">MonkeyType</div>
+                            <div class="cert-label">Certified</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">SpeedTyping</div>
+                            <div class="cert-label">Verified</div>
+                        </div>
                     </div>
-                    <div class="cert-card">
-                        <div class="cert-value">MonkeyType</div>
-                        <div class="cert-label">Certified</div>
+                </section>
+            </div>
+
+            <!-- DATA ENTRY SPECIALIST ROLE -->
+            <div id="dataentry-role">
+                <!-- About Section -->
+                <section class="section">
+                    <h2>About Me</h2>
+                    <p class="about-text">
+                        Dedicated Data Entry Specialist with advanced expertise in Microsoft Excel (2016-2021). Specializing in accurate and efficient data management, database organization, and quality assurance. Proven track record of 99.9% accuracy with 70+ WPM typing speed. Expert in data validation, error detection, and process optimization to ensure data integrity and efficiency.
+                    </p>
+                </section>
+
+                <!-- Key Expertise -->
+                <section class="section">
+                    <h2>Key Expertise</h2>
+                    <div class="expertise-highlights">
+                        <div class="highlight-box">
+                            <h3>Data Entry</h3>
+                            <p>Fast & accurate data input with 99.9% accuracy rate</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Data Management</h3>
+                            <p>Database organization & quality assurance</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Quality Control</h3>
+                            <p>Error detection & data integrity verification</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Speed & Accuracy</h3>
+                            <p>70+ WPM typing with meticulous attention to detail</p>
+                        </div>
                     </div>
-                    <div class="cert-card">
-                        <div class="cert-value">SpeedTyping</div>
-                        <div class="cert-label">Verified</div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="section">
+                    <h2>Professional Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Data Entry Expertise</h3>
+                            <ul class="skill-list">
+                                <li>Rapid Data Entry (70+ WPM)</li>
+                                <li>Manual & Automated Data Input</li>
+                                <li>Large-scale Data Processing</li>
+                                <li>Accuracy Verification</li>
+                                <li>Error Detection & Correction</li>
+                                <li>Data Consistency Checks</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Database Management</h3>
+                            <ul class="skill-list">
+                                <li>Database Organization</li>
+                                <li>Data Validation Protocols</li>
+                                <li>Quality Assurance Procedures</li>
+                                <li>Data Cleaning & Formatting</li>
+                                <li>Record Management</li>
+                                <li>Data Integrity Verification</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Excel for Data Entry</h3>
+                            <ul class="skill-list">
+                                <li>MS Excel 2016, 2019, 2021</li>
+                                <li>Data Validation Features</li>
+                                <li>Formula-based Verification</li>
+                                <li>Spreadsheet Formatting</li>
+                                <li>Basic Macro Automation</li>
+                                <li>Data Import & Export</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h2>Certifications & Achievements</h2>
+                    <div class="cert-grid">
+                        <div class="cert-card">
+                            <div class="cert-value">70+</div>
+                            <div class="cert-label">WPM Typing Speed</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">99.9%</div>
+                            <div class="cert-label">Data Accuracy</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">MonkeyType</div>
+                            <div class="cert-label">Certified</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">SpeedTyping</div>
+                            <div class="cert-label">Verified</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- MS EXCEL SPECIALIST ROLE -->
+            <div id="excel-role">
+                <!-- About Section -->
+                <section class="section">
+                    <h2>About Me</h2>
+                    <p class="about-text">
+                        MS Excel Specialist with extensive expertise across Excel 2016, 2019, and 2021. Master of advanced formulas, pivot tables, VBA macro programming, and complex spreadsheet design. Proven ability to create automated solutions, optimize data analysis workflows, and develop sophisticated reporting systems. Dedicated to delivering enterprise-level Excel solutions with meticulous attention to detail and data accuracy.
+                    </p>
+                </section>
+
+                <!-- Key Expertise -->
+                <section class="section">
+                    <h2>Key Expertise</h2>
+                    <div class="expertise-highlights">
+                        <div class="highlight-box">
+                            <h3>Advanced Formulas</h3>
+                            <p>VLOOKUP, INDEX-MATCH, SUMIF & complex calculations</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>VBA Automation</h3>
+                            <p>Macro programming & automated solutions</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Data Analysis</h3>
+                            <p>Pivot tables & comprehensive data visualization</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>Spreadsheet Design</h3>
+                            <p>Complex systems & process automation</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="section">
+                    <h2>Professional Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <h3>Advanced Excel Functions</h3>
+                            <ul class="skill-list">
+                                <li>VLOOKUP & INDEX-MATCH</li>
+                                <li>SUMIF, COUNTIF & Complex Formulas</li>
+                                <li>Array Formulas & Dynamic Ranges</li>
+                                <li>Conditional Formatting & Validation</li>
+                                <li>Goal Seek & Solver Tools</li>
+                                <li>Named Ranges & Reference Management</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>VBA & Automation</h3>
+                            <ul class="skill-list">
+                                <li>VBA Macro Programming</li>
+                                <li>Automated Workflows</li>
+                                <li>Custom Function Development</li>
+                                <li>Form Design & UserForms</li>
+                                <li>Data Import/Export Automation</li>
+                                <li>Error Handling & Debugging</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Data Analysis & Reporting</h3>
+                            <ul class="skill-list">
+                                <li>Pivot Tables & Pivot Charts</li>
+                                <li>Data Visualization & Graphics</li>
+                                <li>Advanced Reporting Systems</li>
+                                <li>Dashboard Design</li>
+                                <li>Statistical Analysis</li>
+                                <li>Data Modeling & Forecasting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h2>Certifications & Achievements</h2>
+                    <div class="cert-grid">
+                        <div class="cert-card">
+                            <div class="cert-value">Excel</div>
+                            <div class="cert-label">2016, 2019, 2021</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">VBA</div>
+                            <div class="cert-label">Macro Expertise</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">Advanced</div>
+                            <div class="cert-label">Data Analysis</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-value">99.9%</div>
+                            <div class="cert-label">Data Accuracy</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
             <!-- Contact Section -->
-            <section class="section">
+            <section class="section active">
                 <h2>Get in Touch</h2>
                 <div class="contact-info">
                     <div class="contact-item">
@@ -510,14 +779,76 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p>&copy; 2026 Christian - Data Entry Specialist. All rights reserved.</p>
+            <p>&copy; 2026 Christian - Virtual Assistant. All rights reserved.</p>
         </div>
     </div>
 
     <script>
+        let currentRole = 'general';
+
+        function switchRole(role) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.role-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all role sections
+            document.querySelectorAll('#general-role, #dataentry-role, #excel-role').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Remove active class from all sections within roles
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Show the selected role
+            const roleDiv = document.getElementById(role + '-role');
+            if (roleDiv) {
+                roleDiv.style.display = 'block';
+                // Activate sections within the role
+                roleDiv.querySelectorAll('.section').forEach(section => {
+                    section.classList.add('active');
+                });
+            }
+
+            currentRole = role;
+
+            // Show contact section
+            document.querySelectorAll('#general-role ~ .section, #dataentry-role ~ .section, #excel-role ~ .section').forEach(section => {
+                if (section.querySelector('h2:contains("Get in Touch")')) {
+                    section.classList.add('active');
+                }
+            });
+        }
+
         function downloadPortfolio() {
-            // Use the browser's print functionality to save as PDF
             window.print();
+        }
+
+        function downloadResume() {
+            // Generate filename based on current role
+            let filename = 'Christian_Resume_';
+            if (currentRole === 'dataentry') {
+                filename += 'DataEntry.pdf';
+            } else if (currentRole === 'excel') {
+                filename += 'ExcelSpecialist.pdf';
+            } else {
+                filename += 'General.pdf';
+            }
+            
+            // Set print title
+            const originalTitle = document.title;
+            document.title = filename.replace('.pdf', '');
+            
+            window.print();
+            
+            setTimeout(() => {
+                document.title = originalTitle;
+            }, 100);
         }
     </script>
 </body>
