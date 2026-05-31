@@ -3,11 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Christian - Data Entry Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Expertise Section */
+        .expertise-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box p {
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item strong {
+            color: #667eea;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Stephen Baho Oten</h1>
-    <p>Mary Lynn Baho Boto</p>
-    <h5>Marianne Umang</h5>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Christian</h1>
+            <p>Data Entry Specialist | MS Excel Advanced</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- About Section -->
+            <section class="section">
+                <h2>About Me</h2>
+                <p class="about-text">
+                    Dedicated data entry professional with advanced expertise in Microsoft Excel. I specialize in accurate data management, complex spreadsheet design, and process optimization. With a keen eye for detail and a commitment to precision, I deliver high-quality results that drive efficiency and accuracy in data operations.
+                </p>
+            </section>
+
+            <!-- Key Expertise -->
+            <section class="section">
+                <h2>Key Expertise</h2>
+                <div class="expertise-highlights">
+                    <div class="highlight-box">
+                        <h3>Data Entry</h3>
+                        <p>Fast & accurate data input with 99.9% accuracy</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>Excel Mastery</h3>
+                        <p>Advanced formulas, pivot tables & VBA automation</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>Database Management</h3>
+                        <p>Data validation & quality assurance</p>
+                    </div>
+                    <div class="highlight-box">
+                        <h3>Reporting</h3>
+                        <p>Professional reports & data visualization</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h2>Professional Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Excel Advanced</h3>
+                        <ul class="skill-list">
+                            <li>VLOOKUP & INDEX-MATCH formulas</li>
+                            <li>Pivot Tables & Data Analysis</li>
+                            <li>VBA Macro Programming</li>
+                            <li>Complex Spreadsheet Design</li>
+                            <li>Data Validation & Cleaning</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Data Management</h3>
+                        <ul class="skill-list">
+                            <li>Rapid Data Entry</li>
+                            <li>Database Organization</li>
+                            <li>Quality Assurance</li>
+                            <li>Error Detection & Correction</li>
+                            <li>Process Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Office Suite</h3>
+                        <ul class="skill-list">
+                            <li>Microsoft Word</li>
+                            <li>Microsoft PowerPoint</li>
+                            <li>Google Sheets</li>
+                            <li>Data Reporting</li>
+                            <li>Document Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="section">
+                <h2>Get in Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <span>christian@email.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Location:</strong>
+                        <span>Available Remotely</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong>
+                        <span>linkedin.com/in/christian</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2026 Christian - Data Entry Specialist. All rights reserved.</p>
+        </div>
+    </div>
 </body>
 </html>
