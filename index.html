@@ -6,7 +6,7 @@
   <title>Kira Kyomu | Virtual Assistant – Minimalist Portfolio</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Inter (clean, modern) -->
+  <!-- Google Fonts: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -29,13 +29,12 @@
       padding: 0 28px;
     }
 
-    /* Typography */
     h1, h2, h3, h4 {
       font-weight: 600;
       letter-spacing: -0.02em;
     }
 
-    /* Navigation - minimal */
+    /* Navigation */
     nav {
       display: flex;
       justify-content: space-between;
@@ -47,10 +46,23 @@
     }
 
     .logo {
-      font-size: 26px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
       font-weight: 700;
       color: #3b3a36;
-      letter-spacing: -0.3px;
+    }
+
+    /* Cute 3D face SVG (male) */
+    .cute-face {
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+      transition: transform 0.2s ease;
+    }
+    .cute-face:hover {
+      transform: scale(1.02);
     }
 
     .nav-links {
@@ -68,7 +80,7 @@
     }
 
     .nav-links a:hover {
-      color: #b87333;  /* subtle terracotta / bone accent */
+      color: #b87333;
     }
 
     .menu-icon {
@@ -78,7 +90,6 @@
       color: #3b3a36;
     }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       background: transparent;
@@ -109,7 +120,6 @@
       color: #b87333;
     }
 
-    /* Hero */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -167,7 +177,6 @@
       font-size: 14px;
     }
 
-    /* Sections */
     .section {
       padding: 80px 0;
     }
@@ -186,7 +195,6 @@
       font-size: 16px;
     }
 
-    /* Services grid – minimal cards */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -224,7 +232,6 @@
       font-size: 15px;
     }
 
-    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -268,7 +275,6 @@
       font-size: 14px;
     }
 
-    /* About + contact (light bone) */
     .about-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -365,7 +371,6 @@
       margin-top: 28px;
     }
 
-    /* responsiveness */
     @media (max-width: 800px) {
       .nav-links {
         display: none;
@@ -392,6 +397,10 @@
       .about-wrap {
         padding: 32px;
       }
+      .cute-face {
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
@@ -399,7 +408,41 @@
 
 <div class="container">
   <nav>
-    <div class="logo">Kira Kyomu</div>
+    <div class="logo">
+      <!-- Cute male 3D face SVG (can be replaced with your own 3D image) -->
+      <svg class="cute-face" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#FDE2C4" stroke="#D9B48B" stroke-width="1.5"/>
+        <!-- 3D shading (simple gradient) -->
+        <defs>
+          <radialGradient id="faceGrad" cx="40%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#FFEAD0"/>
+            <stop offset="100%" stop-color="#E8C9A0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="url(#faceGrad)"/>
+        <!-- Eyes -->
+        <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+        <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+        <!-- Eye highlights (3D shine) -->
+        <circle cx="37" cy="42" r="2" fill="white" opacity="0.8"/>
+        <circle cx="67" cy="42" r="2" fill="white" opacity="0.8"/>
+        <!-- Eyebrows (slight arch, cute) -->
+        <path d="M28 36 Q35 31 42 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M58 36 Q65 31 72 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Blush / rosy cheeks -->
+        <ellipse cx="28" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+        <ellipse cx="72" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+        <!-- Smile (cute, slight open) -->
+        <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Little tongue (extra cute) -->
+        <path d="M48 68 Q50 74 52 68" fill="#E07A5F" stroke="none"/>
+        <!-- 3D shadow under jaw -->
+        <ellipse cx="50" cy="90" rx="20" ry="4" fill="#C8A27A" opacity="0.4"/>
+        <!-- Small nose -->
+        <path d="M48 53 Q50 57 52 53" stroke="#A47449" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>Kira Kyomu</span>
+    </div>
     <div class="menu-icon" id="menuToggle">
       <i class="fas fa-bars"></i>
     </div>
@@ -412,7 +455,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero section (same as before, kept clean) -->
   <section id="home">
     <div class="hero">
       <div class="hero-content">
@@ -428,13 +471,29 @@
       </div>
       <div style="flex:0.7; text-align:center;">
         <div style="background: #f2ebe3; width: 220px; height: 220px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: auto; border: 1px solid #e0d6cc;">
-          <i class="fas fa-user-check" style="font-size: 72px; color: #b87333;"></i>
+          <!-- Another cute 3D face (same style) can appear here as avatar -->
+          <svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="url(#faceGrad2)" stroke="#D9B48B" stroke-width="1.2"/>
+            <defs><radialGradient id="faceGrad2" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#FFEAD0"/><stop offset="100%" stop-color="#E8C9A0"/></radialGradient></defs>
+            <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <circle cx="37" cy="42" r="2" fill="white" opacity="0.9"/>
+            <circle cx="67" cy="42" r="2" fill="white" opacity="0.9"/>
+            <path d="M28 36 Q35 31 42 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M58 36 Q65 31 72 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="28" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+            <ellipse cx="72" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+            <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M48 68 Q50 74 52 68" fill="#E07A5F"/>
+            <ellipse cx="50" cy="90" rx="20" ry="4" fill="#C8A27A" opacity="0.4"/>
+            <path d="M48 53 Q50 57 52 53" stroke="#A47449" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services (Minimal) -->
+  <!-- Services, Projects, About, Footer (identical to previous minimalist version) -->
   <section id="services" class="section">
     <h2 class="section-title">Solutions I provide for your workflow</h2>
     <p class="section-sub">Behind every efficient business there’s a well‑organized virtual assistant.</p>
@@ -448,7 +507,6 @@
     </div>
   </section>
 
-  <!-- Latest projects -->
   <section id="projects" class="section">
     <h2 class="section-title">My latest projects that live on the web</h2>
     <p class="section-sub">Real efficiency wins I’ve delivered for clients.</p>
@@ -460,7 +518,6 @@
     <div class="view-link"><a href="#" class="btn btn-outline">VIEW ALL PROJECTS →</a></div>
   </section>
 
-  <!-- About + contact (bone white card) -->
   <section id="about" class="section">
     <div class="about-wrap">
       <div class="about-text">
@@ -489,31 +546,27 @@
     </div>
   </section>
 
-  <!-- Footer minimal -->
   <footer>
     <div class="footer">
       <div>
-        <div class="logo" style="margin-bottom: 12px;">Kira Kyomu</div>
+        <div class="logo" style="margin-bottom: 12px;">
+          <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 6px;">
+            <circle cx="50" cy="50" r="46" fill="#FDE2C4" stroke="#D9B48B" stroke-width="1"/>
+            <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          Kira Kyomu
+        </div>
         <p style="color:#6f6d68; max-width: 260px;">I build efficiency systems that help businesses grow smoother and smarter.</p>
       </div>
       <div class="footer-links">
         <h4>Quick links</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About me</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#projects">Portfolio</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About me</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul>
       </div>
       <div class="footer-links">
         <h4>Services</h4>
-        <ul>
-          <li>Inbox management</li>
-          <li>Scheduling</li>
-          <li>Research & data</li>
-          <li>Social media help</li>
-        </ul>
+        <ul><li>Inbox management</li><li>Scheduling</li><li>Research & data</li><li>Social media help</li></ul>
       </div>
     </div>
     <div style="text-align: center; padding: 24px 0 40px; border-top: 1px solid #ece3da; color:#8a8984; font-size: 13px;">
