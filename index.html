@@ -17,7 +17,7 @@
             color: #1a1a1a;
             background: linear-gradient(135deg, #0f3460 0%, #533483 50%, #0f3460 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 10px;
             backdrop-filter: blur(10px);
         }
 
@@ -39,50 +39,51 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: white;
-            padding: 60px 30px;
+            padding: 40px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            margin-bottom: 8px;
             font-weight: 700;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header p {
-            font-size: 1.2em;
+            font-size: clamp(0.9em, 3vw, 1.2em);
             opacity: 0.95;
+            word-break: break-word;
         }
 
         /* Download Buttons Container */
         .download-buttons {
-            position: absolute;
-            top: 20px;
-            right: 30px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: center;
+            margin-top: 15px;
+            width: 100%;
         }
 
         .download-btn {
             background: linear-gradient(135deg, #533483 0%, #0f3460 100%);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 12px 20px;
+            padding: 10px 16px;
             border-radius: 25px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 4px 15px rgba(83, 52, 131, 0.2);
             text-decoration: none;
+            white-space: nowrap;
         }
 
         .download-btn:hover {
@@ -99,18 +100,18 @@
         /* Role Tabs */
         .role-tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-bottom: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            padding: 20px 30px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.5);
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .role-tab {
-            padding: 12px 24px;
+            padding: 10px 16px;
             border: 2px solid rgba(83, 52, 131, 0.3);
             background: rgba(255, 255, 255, 0.6);
             color: #0f3460;
@@ -118,7 +119,8 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 0.95em;
+            font-size: clamp(0.75em, 2vw, 0.95em);
+            white-space: nowrap;
         }
 
         .role-tab:hover {
@@ -136,11 +138,11 @@
 
         /* Main Content */
         .content {
-            padding: 40px 30px;
+            padding: 20px;
         }
 
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             display: none;
         }
 
@@ -156,8 +158,8 @@
 
         .section h2 {
             color: #0f3460;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            margin-bottom: 15px;
             border-bottom: 3px solid #533483;
             padding-bottom: 10px;
             font-weight: 600;
@@ -165,12 +167,12 @@
 
         /* About Section */
         .about-text {
-            font-size: 1.1em;
+            font-size: clamp(0.9em, 2vw, 1.1em);
             line-height: 1.8;
             color: #333;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(10px);
-            padding: 20px;
+            padding: 15px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
@@ -178,15 +180,15 @@
         /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
         }
 
         .skill-card {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 25px;
+            padding: 18px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-left: 5px solid #533483;
@@ -195,16 +197,16 @@
         }
 
         .skill-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 12px 30px rgba(83, 52, 131, 0.2);
+            box-shadow: 0 8px 20px rgba(83, 52, 131, 0.2);
             border: 1px solid rgba(83, 52, 131, 0.3);
         }
 
         .skill-card h3 {
             color: #0f3460;
-            margin-bottom: 15px;
-            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-size: clamp(0.95em, 2.5vw, 1.2em);
             font-weight: 600;
         }
 
@@ -213,10 +215,11 @@
         }
 
         .skill-list li {
-            padding: 8px 0;
-            padding-left: 25px;
+            padding: 6px 0;
+            padding-left: 20px;
             position: relative;
             color: #333;
+            font-size: clamp(0.8em, 1.8vw, 0.95em);
         }
 
         .skill-list li:before {
@@ -225,14 +228,14 @@
             left: 0;
             color: #533483;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
 
         /* Expertise Section */
         .expertise-highlights {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
         }
 
         .highlight-box {
@@ -240,7 +243,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: white;
-            padding: 30px;
+            padding: 20px 15px;
             border-radius: 15px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -249,33 +252,34 @@
         }
 
         .highlight-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             background: rgba(83, 52, 131, 0.85);
-            box-shadow: 0 8px 25px rgba(83, 52, 131, 0.3);
+            box-shadow: 0 6px 20px rgba(83, 52, 131, 0.3);
         }
 
         .highlight-box h3 {
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: clamp(0.95em, 2.5vw, 1.4em);
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .highlight-box p {
             opacity: 0.95;
+            font-size: clamp(0.8em, 1.8vw, 0.95em);
         }
 
         /* Certifications Section */
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
         }
 
         .cert-card {
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 20px;
+            padding: 15px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
@@ -284,22 +288,23 @@
         }
 
         .cert-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 25px rgba(83, 52, 131, 0.15);
+            box-shadow: 0 6px 20px rgba(83, 52, 131, 0.15);
         }
 
         .cert-card .cert-value {
-            font-size: 2em;
+            font-size: clamp(1.3em, 3vw, 2em);
             font-weight: 700;
             color: #533483;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .cert-card .cert-label {
-            font-size: 0.9em;
+            font-size: clamp(0.75em, 1.5vw, 0.9em);
             color: #333;
             font-weight: 500;
+            line-height: 1.3;
         }
 
         /* Contact Section */
@@ -307,19 +312,21 @@
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
+            padding: 20px;
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
             box-shadow: 0 4px 15px rgba(31, 38, 135, 0.1);
         }
 
         .contact-item {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 8px;
+            flex-direction: column;
+            font-size: clamp(0.8em, 1.8vw, 0.95em);
         }
 
         .contact-item strong {
@@ -334,55 +341,23 @@
             -webkit-backdrop-filter: blur(10px);
             color: white;
             text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
+            padding: 15px;
+            font-size: clamp(0.75em, 1.5vw, 0.9em);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
+        /* Tablet and smaller screens */
         @media (max-width: 768px) {
-            .download-buttons {
-                position: static;
-                justify-content: center;
-                margin-bottom: 20px;
-                gap: 8px;
-            }
-
-            .download-btn {
-                padding: 10px 16px;
-                font-size: 0.85em;
+            body {
+                padding: 8px;
             }
 
             .header {
-                padding: 40px 20px;
-            }
-
-            .role-tabs {
-                padding: 15px;
-            }
-
-            .role-tab {
-                padding: 10px 18px;
-                font-size: 0.85em;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .download-btn {
-                width: 100%;
-                justify-content: center;
+                padding: 30px 15px;
             }
 
             .content {
-                padding: 20px;
+                padding: 15px;
             }
 
             .skills-grid {
@@ -390,7 +365,7 @@
             }
 
             .expertise-highlights {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .cert-grid {
@@ -398,17 +373,162 @@
             }
 
             .role-tabs {
+                gap: 6px;
+                padding: 12px;
+            }
+
+            .role-tab {
+                padding: 8px 12px;
+            }
+
+            .download-buttons {
+                gap: 6px;
+            }
+
+            .download-btn {
+                padding: 8px 12px;
+                font-size: 0.8em;
+            }
+        }
+
+        /* Mobile screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                border-radius: 12px;
+            }
+
+            .header {
+                padding: 20px 12px;
+            }
+
+            .header h1 {
+                margin-bottom: 5px;
+            }
+
+            .header p {
+                margin-bottom: 10px;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .section {
+                margin-bottom: 20px;
+            }
+
+            .section h2 {
+                margin-bottom: 12px;
+                padding-bottom: 8px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .skill-card {
+                padding: 15px;
+            }
+
+            .skill-card h3 {
+                margin-bottom: 10px;
+            }
+
+            .skill-list li {
+                padding: 5px 0;
+                padding-left: 18px;
+            }
+
+            .expertise-highlights {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .highlight-box {
+                padding: 15px 12px;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .cert-card {
+                padding: 12px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .contact-item {
+                gap: 6px;
+            }
+
+            .role-tabs {
                 flex-direction: column;
+                gap: 8px;
+                padding: 10px;
             }
 
             .role-tab {
                 width: 100%;
+                padding: 10px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .download-btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 0.85em;
+                justify-content: center;
+            }
+
+            .footer {
+                padding: 12px;
+            }
+
+            .about-text {
+                padding: 12px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 320px) {
+            .header h1 {
+                font-size: 1.4em;
+            }
+
+            .header p {
+                font-size: 0.8em;
+            }
+
+            .download-btn {
+                font-size: 0.75em;
+                padding: 8px 10px;
+            }
+
+            .role-tab {
+                font-size: 0.7em;
+                padding: 8px 10px;
             }
         }
 
         @media print {
             body {
                 background: white;
+                padding: 0;
             }
 
             .container {
@@ -416,6 +536,7 @@
                 border: none;
                 box-shadow: none;
                 max-width: 100%;
+                border-radius: 0;
             }
 
             .download-buttons, .role-tabs {
@@ -424,6 +545,7 @@
 
             .header {
                 background: #0f3460;
+                padding: 30px 20px;
             }
 
             .footer {
@@ -432,6 +554,11 @@
 
             .section {
                 display: block !important;
+                page-break-inside: avoid;
+            }
+
+            .content {
+                padding: 20px;
             }
         }
     </style>
@@ -440,26 +567,26 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
+            <h1>Christian</h1>
+            <p>Virtual Assistant | Data Entry | Excel Expert</p>
             <div class="download-buttons">
                 <button class="download-btn" onclick="downloadPortfolio()">
                     <span>🎨</span>
-                    Portfolio
+                    <span>Portfolio</span>
                 </button>
                 <button class="download-btn" onclick="downloadResume()">
                     <span>📄</span>
-                    Download
+                    <span>Download</span>
                 </button>
             </div>
-            <h1>Christian</h1>
-            <p>Virtual Assistant | Data Entry Specialist | MS Excel Expert</p>
         </div>
 
         <!-- Role Selection Tabs -->
         <div class="content">
             <div class="role-tabs">
                 <button class="role-tab active" onclick="switchRole('general')">📋 General</button>
-                <button class="role-tab" onclick="switchRole('dataentry')">📊 Data Entry Specialist</button>
-                <button class="role-tab" onclick="switchRole('excel')">📈 MS Excel Specialist</button>
+                <button class="role-tab" onclick="switchRole('dataentry')">📊 Data Entry</button>
+                <button class="role-tab" onclick="switchRole('excel')">📈 Excel</button>
             </div>
 
             <!-- GENERAL ROLE -->
@@ -478,19 +605,19 @@
                     <div class="expertise-highlights">
                         <div class="highlight-box">
                             <h3>Data Entry</h3>
-                            <p>Fast & accurate data input with 99.9% accuracy</p>
+                            <p>99.9% accurate, 70+ WPM</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Excel Mastery</h3>
-                            <p>Advanced formulas, pivot tables & VBA automation</p>
+                            <p>Advanced formulas & VBA</p>
                         </div>
                         <div class="highlight-box">
-                            <h3>Administrative Support</h3>
-                            <p>Document management & process optimization</p>
+                            <h3>Admin Support</h3>
+                            <p>Document & process optimization</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Reporting</h3>
-                            <p>Professional reports & data visualization</p>
+                            <p>Data visualization & reports</p>
                         </div>
                     </div>
                 </section>
@@ -502,30 +629,30 @@
                         <div class="skill-card">
                             <h3>Excel Advanced</h3>
                             <ul class="skill-list">
-                                <li>MS Excel 2016, 2019, 2021</li>
-                                <li>VLOOKUP & INDEX-MATCH formulas</li>
-                                <li>Pivot Tables & Data Analysis</li>
-                                <li>VBA Macro Programming</li>
-                                <li>Complex Spreadsheet Design</li>
-                                <li>Data Validation & Cleaning</li>
+                                <li>Excel 2016, 2019, 2021</li>
+                                <li>VLOOKUP & INDEX-MATCH</li>
+                                <li>Pivot Tables</li>
+                                <li>VBA Macros</li>
+                                <li>Data Validation</li>
+                                <li>Spreadsheet Design</li>
                             </ul>
                         </div>
                         <div class="skill-card">
                             <h3>Data Management</h3>
                             <ul class="skill-list">
-                                <li>Rapid Data Entry (70+ WPM)</li>
+                                <li>Rapid Data Entry</li>
                                 <li>Database Organization</li>
                                 <li>Quality Assurance</li>
-                                <li>Error Detection & Correction</li>
+                                <li>Error Detection</li>
                                 <li>Process Optimization</li>
-                                <li>Data Integrity Verification</li>
+                                <li>Data Integrity</li>
                             </ul>
                         </div>
                         <div class="skill-card">
-                            <h3>Administrative Support</h3>
+                            <h3>Administrative</h3>
                             <ul class="skill-list">
-                                <li>Microsoft Word</li>
-                                <li>Microsoft PowerPoint</li>
+                                <li>MS Word</li>
+                                <li>MS PowerPoint</li>
                                 <li>Google Sheets</li>
                                 <li>Data Reporting</li>
                                 <li>Document Management</li>
@@ -541,11 +668,11 @@
                     <div class="cert-grid">
                         <div class="cert-card">
                             <div class="cert-value">70+</div>
-                            <div class="cert-label">WPM Typing Speed</div>
+                            <div class="cert-label">WPM Typing</div>
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">99.9%</div>
-                            <div class="cert-label">Data Accuracy</div>
+                            <div class="cert-label">Accuracy</div>
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">MonkeyType</div>
@@ -575,19 +702,19 @@
                     <div class="expertise-highlights">
                         <div class="highlight-box">
                             <h3>Data Entry</h3>
-                            <p>Fast & accurate data input with 99.9% accuracy rate</p>
+                            <p>99.9% accuracy rate</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Data Management</h3>
-                            <p>Database organization & quality assurance</p>
+                            <p>Database organization</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Quality Control</h3>
-                            <p>Error detection & data integrity verification</p>
+                            <p>Error detection & verification</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Speed & Accuracy</h3>
-                            <p>70+ WPM typing with meticulous attention to detail</p>
+                            <p>70+ WPM with precision</p>
                         </div>
                     </div>
                 </section>
@@ -597,36 +724,36 @@
                     <h2>Professional Skills</h2>
                     <div class="skills-grid">
                         <div class="skill-card">
-                            <h3>Data Entry Expertise</h3>
+                            <h3>Data Entry</h3>
                             <ul class="skill-list">
-                                <li>Rapid Data Entry (70+ WPM)</li>
-                                <li>Manual & Automated Data Input</li>
-                                <li>Large-scale Data Processing</li>
-                                <li>Accuracy Verification</li>
-                                <li>Error Detection & Correction</li>
-                                <li>Data Consistency Checks</li>
+                                <li>70+ WPM typing</li>
+                                <li>Manual & automated input</li>
+                                <li>Large-scale processing</li>
+                                <li>Accuracy verification</li>
+                                <li>Error detection</li>
+                                <li>Consistency checks</li>
                             </ul>
                         </div>
                         <div class="skill-card">
-                            <h3>Database Management</h3>
+                            <h3>Database Mgmt</h3>
                             <ul class="skill-list">
-                                <li>Database Organization</li>
-                                <li>Data Validation Protocols</li>
-                                <li>Quality Assurance Procedures</li>
-                                <li>Data Cleaning & Formatting</li>
-                                <li>Record Management</li>
-                                <li>Data Integrity Verification</li>
+                                <li>Database organization</li>
+                                <li>Data validation</li>
+                                <li>Quality assurance</li>
+                                <li>Data cleaning</li>
+                                <li>Record management</li>
+                                <li>Data integrity</li>
                             </ul>
                         </div>
                         <div class="skill-card">
-                            <h3>Excel for Data Entry</h3>
+                            <h3>Excel Tools</h3>
                             <ul class="skill-list">
-                                <li>MS Excel 2016, 2019, 2021</li>
-                                <li>Data Validation Features</li>
-                                <li>Formula-based Verification</li>
-                                <li>Spreadsheet Formatting</li>
-                                <li>Basic Macro Automation</li>
-                                <li>Data Import & Export</li>
+                                <li>Excel 2016-2021</li>
+                                <li>Data validation</li>
+                                <li>Formula verification</li>
+                                <li>Spreadsheet formatting</li>
+                                <li>Macro automation</li>
+                                <li>Import & export</li>
                             </ul>
                         </div>
                     </div>
@@ -638,11 +765,11 @@
                     <div class="cert-grid">
                         <div class="cert-card">
                             <div class="cert-value">70+</div>
-                            <div class="cert-label">WPM Typing Speed</div>
+                            <div class="cert-label">WPM Speed</div>
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">99.9%</div>
-                            <div class="cert-label">Data Accuracy</div>
+                            <div class="cert-label">Accuracy</div>
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">MonkeyType</div>
@@ -672,19 +799,19 @@
                     <div class="expertise-highlights">
                         <div class="highlight-box">
                             <h3>Advanced Formulas</h3>
-                            <p>VLOOKUP, INDEX-MATCH, SUMIF & complex calculations</p>
+                            <p>VLOOKUP, INDEX-MATCH, complex calculations</p>
                         </div>
                         <div class="highlight-box">
                             <h3>VBA Automation</h3>
-                            <p>Macro programming & automated solutions</p>
+                            <p>Macro programming & solutions</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Data Analysis</h3>
-                            <p>Pivot tables & comprehensive data visualization</p>
+                            <p>Pivot tables & visualization</p>
                         </div>
                         <div class="highlight-box">
                             <h3>Spreadsheet Design</h3>
-                            <p>Complex systems & process automation</p>
+                            <p>Complex systems & automation</p>
                         </div>
                     </div>
                 </section>
@@ -694,36 +821,36 @@
                     <h2>Professional Skills</h2>
                     <div class="skills-grid">
                         <div class="skill-card">
-                            <h3>Advanced Excel Functions</h3>
+                            <h3>Advanced Functions</h3>
                             <ul class="skill-list">
                                 <li>VLOOKUP & INDEX-MATCH</li>
-                                <li>SUMIF, COUNTIF & Complex Formulas</li>
-                                <li>Array Formulas & Dynamic Ranges</li>
-                                <li>Conditional Formatting & Validation</li>
-                                <li>Goal Seek & Solver Tools</li>
-                                <li>Named Ranges & Reference Management</li>
+                                <li>SUMIF, COUNTIF</li>
+                                <li>Array formulas</li>
+                                <li>Conditional formatting</li>
+                                <li>Goal Seek & Solver</li>
+                                <li>Named ranges</li>
                             </ul>
                         </div>
                         <div class="skill-card">
                             <h3>VBA & Automation</h3>
                             <ul class="skill-list">
-                                <li>VBA Macro Programming</li>
-                                <li>Automated Workflows</li>
-                                <li>Custom Function Development</li>
-                                <li>Form Design & UserForms</li>
-                                <li>Data Import/Export Automation</li>
-                                <li>Error Handling & Debugging</li>
+                                <li>VBA programming</li>
+                                <li>Automated workflows</li>
+                                <li>Custom functions</li>
+                                <li>Form design</li>
+                                <li>Data automation</li>
+                                <li>Error handling</li>
                             </ul>
                         </div>
                         <div class="skill-card">
-                            <h3>Data Analysis & Reporting</h3>
+                            <h3>Data & Reporting</h3>
                             <ul class="skill-list">
-                                <li>Pivot Tables & Pivot Charts</li>
-                                <li>Data Visualization & Graphics</li>
-                                <li>Advanced Reporting Systems</li>
-                                <li>Dashboard Design</li>
-                                <li>Statistical Analysis</li>
-                                <li>Data Modeling & Forecasting</li>
+                                <li>Pivot tables & charts</li>
+                                <li>Data visualization</li>
+                                <li>Reporting systems</li>
+                                <li>Dashboard design</li>
+                                <li>Statistical analysis</li>
+                                <li>Data modeling</li>
                             </ul>
                         </div>
                     </div>
@@ -739,7 +866,7 @@
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">VBA</div>
-                            <div class="cert-label">Macro Expertise</div>
+                            <div class="cert-label">Expertise</div>
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">Advanced</div>
@@ -747,7 +874,7 @@
                         </div>
                         <div class="cert-card">
                             <div class="cert-value">99.9%</div>
-                            <div class="cert-label">Data Accuracy</div>
+                            <div class="cert-label">Accuracy</div>
                         </div>
                     </div>
                 </section>
@@ -787,29 +914,23 @@
         let currentRole = 'general';
 
         function switchRole(role) {
-            // Remove active class from all tabs
             document.querySelectorAll('.role-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
 
-            // Remove active class from all role sections
             document.querySelectorAll('#general-role, #dataentry-role, #excel-role').forEach(section => {
                 section.style.display = 'none';
             });
 
-            // Remove active class from all sections within roles
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
 
-            // Add active class to clicked tab
             event.target.classList.add('active');
 
-            // Show the selected role
             const roleDiv = document.getElementById(role + '-role');
             if (roleDiv) {
                 roleDiv.style.display = 'block';
-                // Activate sections within the role
                 roleDiv.querySelectorAll('.section').forEach(section => {
                     section.classList.add('active');
                 });
@@ -818,8 +939,8 @@
             currentRole = role;
 
             // Show contact section
-            document.querySelectorAll('#general-role ~ .section, #dataentry-role ~ .section, #excel-role ~ .section').forEach(section => {
-                if (section.querySelector('h2:contains("Get in Touch")')) {
+            document.querySelectorAll('.section').forEach(section => {
+                if (section.querySelector('h2') && section.querySelector('h2').textContent.includes('Get in Touch')) {
                     section.classList.add('active');
                 }
             });
@@ -830,7 +951,6 @@
         }
 
         function downloadResume() {
-            // Generate filename based on current role
             let filename = 'Christian_Resume_';
             if (currentRole === 'dataentry') {
                 filename += 'DataEntry.pdf';
@@ -840,7 +960,6 @@
                 filename += 'General.pdf';
             }
             
-            // Set print title
             const originalTitle = document.title;
             document.title = filename.replace('.pdf', '');
             
