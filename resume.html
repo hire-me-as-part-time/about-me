@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian - ATS Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.5;
+            color: #000;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.5in;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .name {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .contact-info {
+            font-size: 9pt;
+            margin-bottom: 4px;
+        }
+
+        .contact-info span {
+            margin: 0 8px;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            font-size: 11pt;
+            font-weight: bold;
+            background: #f0f0f0;
+            padding: 4px 6px;
+            margin-top: 8px;
+            margin-bottom: 6px;
+            border-left: 3px solid #000;
+        }
+
+        /* Entry */
+        .entry {
+            margin-bottom: 8px;
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .entry-title {
+            font-weight: bold;
+            font-size: 10pt;
+        }
+
+        .entry-date {
+            font-size: 9pt;
+            font-style: italic;
+        }
+
+        .entry-subtitle {
+            font-size: 9pt;
+            font-style: italic;
+            margin-bottom: 2px;
+        }
+
+        .entry-description {
+            font-size: 9pt;
+            margin-left: 0;
+            line-height: 1.3;
+        }
+
+        .entry-description ul {
+            margin-left: 20px;
+            margin-top: 2px;
+        }
+
+        .entry-description li {
+            margin-bottom: 2px;
+        }
+
+        /* Skills */
+        .skills-group {
+            margin-bottom: 6px;
+            font-size: 9pt;
+        }
+
+        .skills-label {
+            font-weight: bold;
+            display: inline;
+            margin-right: 4px;
+        }
+
+        .skills-list {
+            display: inline;
+        }
+
+        /* Certifications */
+        .cert-item {
+            font-size: 9pt;
+            margin-bottom: 3px;
+        }
+
+        .cert-title {
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 100%;
+                height: auto;
+                padding: 0.5in;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                max-width: 100%;
+                height: auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="name">CHRISTIAN</div>
+            <div class="contact-info">
+                <span>Email: christian@email.com</span>
+                <span>|</span>
+                <span>Phone: +1 (555) 123-4567</span>
+                <span>|</span>
+                <span>Location: Available Remotely</span>
+            </div>
+            <div class="contact-info">
+                <span>LinkedIn: linkedin.com/in/christian</span>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section-heading">PROFESSIONAL SUMMARY</div>
+        <div style="font-size: 9pt; line-height: 1.4; margin-bottom: 8px;">
+            Data Entry Specialist with advanced expertise in Microsoft Excel 2016-2021. Proven track record of 99.9% accuracy with 70+ WPM typing speed. Skilled in complex spreadsheet design, VBA macro programming, database management, and process optimization. Certified in typing proficiency through MonkeyType and SpeedTypingOnline. Dedicated to delivering efficient and high-quality data management solutions.
+        </div>
+
+        <!-- Core Competencies -->
+        <div class="section-heading">CORE COMPETENCIES</div>
+        <div class="skills-group">
+            <span class="skills-label">Data Entry & Management:</span>
+            <span class="skills-list">Rapid data entry (70+ WPM), Database organization, Quality assurance, Error detection & correction, Data validation, Data integrity verification</span>
+        </div>
+        <div class="skills-group">
+            <span class="skills-label">Microsoft Excel:</span>
+            <span class="skills-list">Excel 2016, 2019, 2021, VLOOKUP, INDEX-MATCH formulas, Pivot tables, Data analysis, VBA macro programming, Complex spreadsheet design, Data cleaning</span>
+        </div>
+        <div class="skills-group">
+            <span class="skills-label">Office Applications:</span>
+            <span class="skills-list">MS Word, MS PowerPoint, Google Sheets, Data reporting, Document management, Advanced formatting</span>
+        </div>
+        <div class="skills-group">
+            <span class="skills-label">Additional Skills:</span>
+            <span class="skills-list">Process optimization, Professional report generation, Data visualization, Attention to detail</span>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="section-heading">KEY ACHIEVEMENTS</div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Data Entry Accuracy & Speed</span>
+                <span class="entry-date">Ongoing</span>
+            </div>
+            <ul class="entry-description">
+                <li>Maintained 99.9% accuracy rate in all data entry projects</li>
+                <li>Achieved 70+ WPM typing speed verified through MonkeyType and SpeedTypingOnline</li>
+                <li>Successfully processed 10,000+ records with zero critical errors</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Excel Automation & Efficiency</span>
+                <span class="entry-date">Ongoing</span>
+            </div>
+            <ul class="entry-description">
+                <li>Developed VBA macros to automate repetitive data entry tasks, reducing processing time by 40%</li>
+                <li>Created complex spreadsheet solutions with advanced formulas for data analysis</li>
+                <li>Implemented data validation protocols to ensure quality and consistency</li>
+            </ul>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section-heading">PROFESSIONAL EXPERIENCE</div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Data Entry Specialist</span>
+                <span class="entry-date">Present</span>
+            </div>
+            <div class="entry-subtitle">Freelance | Remote</div>
+            <ul class="entry-description">
+                <li>Execute accurate and efficient data entry tasks with 99.9% accuracy rate</li>
+                <li>Manage complex spreadsheet databases using advanced Excel features</li>
+                <li>Perform quality assurance checks and error correction</li>
+                <li>Optimize data management processes for improved workflow efficiency</li>
+                <li>Provide professional reporting and data visualization solutions</li>
+            </ul>
+        </div>
+
+        <!-- Certifications & Skills Verification -->
+        <div class="section-heading">CERTIFICATIONS & ACHIEVEMENTS</div>
+        <div class="cert-item">
+            <span class="cert-title">Typing Speed Certification:</span> 70+ WPM (MonkeyType & SpeedTypingOnline Verified)
+        </div>
+        <div class="cert-item">
+            <span class="cert-title">Microsoft Excel Proficiency:</span> Advanced level across Excel 2016, 2019, and 2021 versions
+        </div>
+        <div class="cert-item">
+            <span class="cert-title">Data Accuracy:</span> 99.9% accuracy rate in all data entry projects
+        </div>
+        <div class="cert-item">
+            <span class="cert-title">VBA Macro Programming:</span> Proficient in creating automated solutions
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section-heading">TECHNICAL SKILLS</div>
+        <div class="skills-group">
+            <span class="skills-label">Software:</span>
+            <span class="skills-list">Microsoft Excel 2016/2019/2021, Microsoft Word, Microsoft PowerPoint, Google Sheets, VBA Macro Editor</span>
+        </div>
+        <div class="skills-group">
+            <span class="skills-label">Specialized Functions:</span>
+            <span class="skills-list">VLOOKUP, INDEX-MATCH, SUMIF, COUNTIF, Pivot Tables, Data Validation, Conditional Formatting, Array Formulas</span>
+        </div>
+
+    </div>
+</body>
+</html>
