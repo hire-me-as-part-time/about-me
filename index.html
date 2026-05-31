@@ -42,6 +42,7 @@
             padding: 60px 30px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
         }
 
         .header h1 {
@@ -54,6 +55,42 @@
         .header p {
             font-size: 1.2em;
             opacity: 0.95;
+        }
+
+        /* Download Button */
+        .download-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: linear-gradient(135deg, #533483 0%, #0f3460 100%);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(83, 52, 131, 0.2);
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #0f3460 0%, #533483 100%);
+            box-shadow: 0 8px 25px rgba(83, 52, 131, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .download-icon {
+            font-size: 1.1em;
         }
 
         /* Main Content */
@@ -255,6 +292,13 @@
                 font-size: 1.8em;
             }
 
+            .download-btn {
+                position: static;
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 15px;
+            }
+
             .content {
                 padding: 20px;
             }
@@ -271,12 +315,41 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                background: white;
+                border: none;
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .download-btn {
+                display: none;
+            }
+
+            .header {
+                background: #0f3460;
+            }
+
+            .footer {
+                background: #0f3460;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
+            <button class="download-btn" onclick="downloadResume()">
+                <span class="download-icon">⬇️</span>
+                Download Resume
+            </button>
             <h1>Christian</h1>
             <p>Data Entry Specialist | MS Excel Advanced (2016-2021)</p>
         </div>
@@ -406,5 +479,20 @@
             <p>&copy; 2026 Christian - Data Entry Specialist. All rights reserved.</p>
         </div>
     </div>
+
+    <script>
+        function downloadResume() {
+            // Set the filename
+            const fileName = 'Christian_Resume_DataEntry.pdf';
+            
+            // Use the browser's print functionality to save as PDF
+            window.print();
+            
+            // Optional: Set a timeout to trigger print dialog
+            setTimeout(() => {
+                // This ensures the print dialog appears
+            }, 100);
+        }
+    </script>
 </body>
 </html>
