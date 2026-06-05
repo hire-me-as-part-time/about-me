@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Earth - 3D Interactive Model</title>
+  <title>Kira Kyomu | Virtual Assistant</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,349 +16,576 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000000;
-      color: #ffffff;
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background-color: #fefaf5;  /* bone / warm off-white */
+      color: #2c2b28;
+      line-height: 1.5;
+      scroll-behavior: smooth;
     }
 
-    #canvas {
-      display: block;
-      width: 100%;
-      height: 100vh;
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
     }
 
-    .content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navigation */
+    nav {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      pointer-events: none;
-      z-index: 10;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 28px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-bottom: 1px solid #e8e0d5;
     }
 
-    .heading {
-      font-size: 4rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
       font-weight: 700;
+      color: #3b3a36;
+    }
+
+    /* Cute 3D face SVG (male) */
+    .cute-face {
+      width: 42px;
+      height: 42px;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+      transition: transform 0.2s ease;
+    }
+    .cute-face:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5b5a56;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #b87333;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: #3b3a36;
+    }
+
+    .btn {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #d6cdc1;
+      color: #3b3a36;
+      padding: 10px 26px;
+      font-weight: 500;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: 0.2s;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: #3b3a36;
+      border-color: #3b3a36;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2c2b28;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline:hover {
+      background: #f4ede6;
+      border-color: #b87333;
+      color: #b87333;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 48px;
+      padding: 64px 0 48px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      color: #b87333;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .hero-content h1 {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.2;
       margin-bottom: 20px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      background: linear-gradient(135deg, #00d4ff, #0099ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-      animation: glow 2s ease-in-out infinite;
+      color: #2c2b28;
     }
 
-    @keyframes glow {
-      0%, 100% {
-        text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-      }
-      50% {
-        text-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
-      }
+    .highlight {
+      color: #b87333;
     }
 
-    .description {
+    .hero-desc {
+      font-size: 17px;
+      color: #6b6a66;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 32px;
+    }
+
+    .stat h3 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2c2b28;
+    }
+
+    .stat p {
+      color: #8a8984;
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 650;
+      margin-bottom: 16px;
+      color: #2c2b28;
+    }
+
+    .section-sub {
+      color: #7a7974;
+      margin-bottom: 48px;
       max-width: 600px;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #cccccc;
-      margin-top: 30px;
-      animation: fadeIn 2s ease-in;
+      font-size: 16px;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
     }
 
-    .info-box {
-      margin-top: 40px;
-      padding: 20px 30px;
-      background: rgba(0, 212, 255, 0.05);
-      border: 2px solid rgba(0, 212, 255, 0.3);
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
-      max-width: 600px;
-      animation: fadeIn 2.5s ease-in;
+    .service-card {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 24px;
+      transition: all 0.25s;
+      border: 1px solid #ece3da;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
 
-    .info-box p {
-      font-size: 0.95rem;
-      color: #aaaaaa;
-      margin: 10px 0;
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: #dccfbf;
+      box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.08);
     }
 
-    .info-box strong {
-      color: #00d4ff;
+    .service-icon {
+      font-size: 36px;
+      color: #b87333;
+      margin-bottom: 22px;
     }
 
-    .controls-hint {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.9rem;
-      color: #666666;
-      pointer-events: auto;
-      z-index: 20;
+    .service-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
     }
 
-    @media (max-width: 768px) {
-      .heading {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-      }
-
-      .description {
-        font-size: 1rem;
-        max-width: 90%;
-      }
-
-      .info-box {
-        max-width: 90%;
-        padding: 15px 20px;
-      }
-
-      .content {
-        padding: 20px 15px;
-      }
+    .service-card p {
+      color: #73716c;
+      font-size: 15px;
     }
 
-    @media (max-width: 480px) {
-      .heading {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-      }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 16px;
+    }
 
-      .description {
-        font-size: 0.95rem;
-        margin-top: 20px;
-      }
+    .project-card {
+      background: #ffffff;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid #ece3da;
+      transition: 0.2s;
+    }
 
-      .info-box {
-        margin-top: 25px;
-        padding: 12px 15px;
-      }
+    .project-card:hover {
+      border-color: #d6cdc1;
+    }
 
-      .info-box p {
-        font-size: 0.85rem;
-      }
+    .project-img {
+      height: 190px;
+      background: #f7f2eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 44px;
+      color: #b87333;
+    }
 
-      .controls-hint {
-        font-size: 0.75rem;
-        bottom: 20px;
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-info h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .project-info p {
+      color: #6f6d68;
+      font-size: 14px;
+    }
+
+    .about-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: space-between;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 48px;
+      border: 1px solid #ece3da;
+    }
+
+    .about-text {
+      flex: 1.5;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .contact-info p {
+      margin: 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #5a5955;
+    }
+
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .quick-links span {
+      font-size: 14px;
+      background: #f5efe8;
+      padding: 6px 14px;
+      border-radius: 50px;
+      color: #4a4844;
+    }
+
+    .footer {
+      border-top: 1px solid #e8e0d5;
+      padding: 48px 0 32px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .social-icons a {
+      color: #8a8984;
+      font-size: 20px;
+      margin-right: 20px;
+      transition: 0.2s;
+    }
+
+    .social-icons a:hover {
+      color: #b87333;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #6b6a66;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: #b87333;
+    }
+
+    .testimonial-quote {
+      font-style: normal;
+      border-left: 3px solid #b87333;
+      padding-left: 20px;
+      margin: 28px 0;
+      color: #4f4d49;
+      font-size: 15px;
+      background: #fefaf5;
+    }
+
+    .view-link {
+      text-align: right;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: #fefaf5;
+        padding: 20px;
+        border-radius: 28px;
+        margin-top: 12px;
+        border: 1px solid #ece3da;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 40px;
+      }
+      .section-title {
+        font-size: 28px;
+      }
+      .about-wrap {
+        padding: 32px;
+      }
+      .cute-face {
+        width: 36px;
+        height: 36px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="content">
-    <h1 class="heading">THE EARTH</h1>
-    <p class="description">
-      Our planet, the third rock from the Sun, is a dynamic sphere of life and wonder. 
-      Covered in vast oceans, continents, and teeming with biodiversity, Earth is the only known world 
-      to harbor life. Rotating on its axis once every 24 hours, it orbits the Sun every 365.25 days, 
-      creating the rhythms of day, night, and seasons that define existence.
-    </p>
-    <div class="info-box">
-      <p><strong>Diameter:</strong> 12,742 km</p>
-      <p><strong>Distance from Sun:</strong> 149.6 million km (1 AU)</p>
-      <p><strong>Orbital Period:</strong> 365.25 days</p>
+
+<div class="container">
+  <nav>
+    <div class="logo">
+      <!-- Cute male 3D face SVG (can be replaced with your own 3D image) -->
+      <svg class="cute-face" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="#FDE2C4" stroke="#D9B48B" stroke-width="1.5"/>
+        <!-- 3D shading (simple gradient) -->
+        <defs>
+          <radialGradient id="faceGrad" cx="40%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#FFEAD0"/>
+            <stop offset="100%" stop-color="#E8C9A0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="url(#faceGrad)"/>
+        <!-- Eyes -->
+        <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+        <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+        <!-- Eye highlights (3D shine) -->
+        <circle cx="37" cy="42" r="2" fill="white" opacity="0.8"/>
+        <circle cx="67" cy="42" r="2" fill="white" opacity="0.8"/>
+        <!-- Eyebrows (slight arch, cute) -->
+        <path d="M28 36 Q35 31 42 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M58 36 Q65 31 72 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Blush / rosy cheeks -->
+        <ellipse cx="28" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+        <ellipse cx="72" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+        <!-- Smile (cute, slight open) -->
+        <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Little tongue (extra cute) -->
+        <path d="M48 68 Q50 74 52 68" fill="#E07A5F" stroke="none"/>
+        <!-- 3D shadow under jaw -->
+        <ellipse cx="50" cy="90" rx="20" ry="4" fill="#C8A27A" opacity="0.4"/>
+        <!-- Small nose -->
+        <path d="M48 53 Q50 57 52 53" stroke="#A47449" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>Kira Kyomu</span>
     </div>
-    <div class="controls-hint">
-      Drag to rotate • Scroll to zoom
+    <div class="menu-icon" id="menuToggle">
+      <i class="fas fa-bars"></i>
     </div>
-  </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script>
-    let scene, camera, renderer, earth, orbitLine;
-    const canvas = document.createElement('canvas');
-    document.body.insertBefore(canvas, document.body.firstChild);
+  <!-- Hero section (same as before, kept clean) -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">✦ VIRTUAL ASSISTANT</div>
+        <h1>I'm <span class="highlight">Kira Kyomu</span><br>Your organized & proactive partner</h1>
+        <p class="hero-desc">I help founders, creators and small teams streamline operations, manage schedules, and reclaim their time — with a calm, minimalist approach.</p>
+        <a href="#contact" class="btn btn-primary">Work with me →</a>
+        <div class="hero-stats">
+          <div class="stat"><h3>50+</h3><p>Clients</p></div>
+          <div class="stat"><h3>130+</h3><p>Projects</p></div>
+          <div class="stat"><h3>98%</h3><p>Satisfaction</p></div>
+        </div>
+      </div>
+      <div style="flex:0.7; text-align:center;">
+        <div style="background: #f2ebe3; width: 220px; height: 220px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: auto; border: 1px solid #e0d6cc;">
+          <!-- Another cute 3D face (same style) can appear here as avatar -->
+          <svg width="140" height="140" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="url(#faceGrad2)" stroke="#D9B48B" stroke-width="1.2"/>
+            <defs><radialGradient id="faceGrad2" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#FFEAD0"/><stop offset="100%" stop-color="#E8C9A0"/></radialGradient></defs>
+            <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <circle cx="37" cy="42" r="2" fill="white" opacity="0.9"/>
+            <circle cx="67" cy="42" r="2" fill="white" opacity="0.9"/>
+            <path d="M28 36 Q35 31 42 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M58 36 Q65 31 72 36" stroke="#6B4C2C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <ellipse cx="28" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+            <ellipse cx="72" cy="56" rx="6" ry="4" fill="#F4A261" opacity="0.5"/>
+            <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M48 68 Q50 74 52 68" fill="#E07A5F"/>
+            <ellipse cx="50" cy="90" rx="20" ry="4" fill="#C8A27A" opacity="0.4"/>
+            <path d="M48 53 Q50 57 52 53" stroke="#A47449" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function init() {
-      // Scene setup
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x000000);
+  <!-- Services, Projects, About, Footer (identical to previous minimalist version) -->
+  <section id="services" class="section">
+    <h2 class="section-title">Solutions I provide for your workflow</h2>
+    <p class="section-sub">Behind every efficient business there's a well‑organized virtual assistant.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon"><i class="far fa-envelope"></i></div><h3>Inbox Management</h3><p>Clean, label, triage & respond – keep your communication effortless.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="far fa-calendar-alt"></i></div><h3>Scheduling & meetings</h3><p>Calendar sync, appointment setting, time‑zone coordination.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-tasks"></i></div><h3>Project admin</h3><p>Asana, Trello, Notion – task tracking and follow‑ups.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-search"></i></div><h3>Research & data entry</h3><p>Market research, lead lists, CRM clean‑up.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-hashtag"></i></div><h3>Social media support</h3><p>Scheduling posts, engagement, basic content assistance.</p></div>
+      <div class="service-card"><div class="service-icon"><i class="fas fa-file-powerpoint"></i></div><h3>Document & presentation</h3><p>Polished slides, reports, meeting notes.</p></div>
+    </div>
+  </section>
 
-      // Camera setup
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000);
-      camera.position.z = 2.5;
+  <section id="projects" class="section">
+    <h2 class="section-title">My latest projects that live on the web</h2>
+    <p class="section-sub">Real efficiency wins I've delivered for clients.</p>
+    <div class="projects-grid">
+      <div class="project-card"><div class="project-img"><i class="fas fa-trello fa-3x"></i></div><div class="project-info"><h3>Trello automation setup</h3><p>Saved 6h/week for a creative agency</p></div></div>
+      <div class="project-card"><div class="project-img"><i class="fas fa-inbox fa-3x"></i></div><div class="project-info"><h3>Inbox zero migration</h3><p>Gmail filters + templates → 45% less emails</p></div></div>
+      <div class="project-card"><div class="project-img"><i class="fas fa-calendar-week fa-3x"></i></div><div class="project-info"><h3>Executive calendar reboot</h3><p>Coordinated 30+ meetings across time zones</p></div></div>
+    </div>
+    <div class="view-link"><a href="#" class="btn btn-outline">VIEW ALL PROJECTS →</a></div>
+  </section>
 
-      // Renderer setup
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+  <section id="about" class="section">
+    <div class="about-wrap">
+      <div class="about-text">
+        <h2 class="section-title" style="margin-bottom: 20px;">Who's behind all this great work?</h2>
+        <p style="font-size: 17px; margin-bottom: 20px; color:#464542;">I'm Kira Kyomu – a minimalist virtual assistant and operations enthusiast. I don't just complete tasks, I build systems that last.</p>
+        <div class="testimonial-quote">"Kira brought structure to my chaos. Now I actually have time to think about growth." — Emma L., founder</div>
+        <div class="quick-links">
+          <span><i class="fas fa-check-circle"></i> Fast replies</span>
+          <span><i class="fas fa-check-circle"></i> Confidential</span>
+          <span><i class="fas fa-check-circle"></i> Slack / Zoom ready</span>
+        </div>
+      </div>
+      <div class="contact-info" id="contact">
+        <h3 style="font-size: 28px; margin-bottom: 20px;">Let's work together</h3>
+        <p>I'm available for freelance virtual assistant projects. Let's discuss how I can support your daily operations.</p>
+        <p><i class="far fa-envelope" style="color:#b87333;"></i> hello@kirakyomu.com</p>
+        <p><i class="fas fa-phone-alt"></i> +212 6 98 76 54 32</p>
+        <p><i class="fas fa-map-marker-alt"></i> Remote / based in Morocco</p>
+        <div class="social-icons" style="margin-top: 28px;">
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-      scene.add(ambientLight);
+  <footer>
+    <div class="footer">
+      <div>
+        <div class="logo" style="margin-bottom: 12px;">
+          <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-right: 6px;">
+            <circle cx="50" cy="50" r="46" fill="#FDE2C4" stroke="#D9B48B" stroke-width="1"/>
+            <ellipse cx="35" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <ellipse cx="65" cy="44" rx="5" ry="6" fill="#3A2C1F"/>
+            <path d="M40 65 Q50 76 60 65" stroke="#8B5E3C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+          Kira Kyomu
+        </div>
+        <p style="color:#6f6d68; max-width: 260px;">I build efficiency systems that help businesses grow smoother and smarter.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick links</h4>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About me</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Portfolio</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul><li>Inbox management</li><li>Scheduling</li><li>Research & data</li><li>Social media help</li></ul>
+      </div>
+    </div>
+    <div style="text-align: center; padding: 24px 0 40px; border-top: 1px solid #ece3da; color:#8a8984; font-size: 13px;">
+      © 2026 Kira Kyomu – Virtual Assistant. All rights reserved.
+    </div>
+  </footer>
+</div>
 
-      const sunLight = new THREE.PointLight(0xffffff, 1.2);
-      sunLight.position.set(5, 3, 5);
-      scene.add(sunLight);
-
-      // Create Earth
-      createEarth();
-
-      // Create orbit line
-      createOrbit();
-
-      // Add stars
-      createStars();
-
-      // Event listeners
-      window.addEventListener('resize', onWindowResize);
-      window.addEventListener('mousemove', onMouseMove);
-      window.addEventListener('wheel', onMouseWheel, { passive: true });
-
-      // Start animation
-      animate();
-    }
-
-    function createEarth() {
-      const geometry = new THREE.SphereGeometry(1, 64, 64);
-      
-      // Create a canvas texture for Earth
-      const canvas = document.createElement('canvas');
-      canvas.width = 2048;
-      canvas.height = 1024;
-      const ctx = canvas.getContext('2d');
-
-      // Ocean blue
-      ctx.fillStyle = '#1a4d7a';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Add continents (simplified)
-      ctx.fillStyle = '#2d5a2d';
-      
-      // North America
-      ctx.fillRect(100, 200, 300, 250);
-      // South America
-      ctx.fillRect(200, 450, 150, 200);
-      // Europe
-      ctx.fillRect(700, 150, 150, 150);
-      // Africa
-      ctx.fillRect(800, 300, 200, 300);
-      // Asia
-      ctx.fillRect(1100, 100, 400, 300);
-      // Australia
-      ctx.fillRect(1400, 500, 120, 100);
-      // Antarctica
-      ctx.fillRect(0, 900, canvas.width, 100);
-
-      const texture = new THREE.CanvasTexture(canvas);
-      const material = new THREE.MeshPhongMaterial({
-        map: texture,
-        shininess: 5
-      });
-
-      earth = new THREE.Mesh(geometry, material);
-      scene.add(earth);
-    }
-
-    function createOrbit() {
-      const orbitRadius = 3;
-      const points = [];
-      for (let i = 0; i <= 256; i++) {
-        const angle = (i / 256) * Math.PI * 2;
-        points.push(
-          new THREE.Vector3(
-            Math.cos(angle) * orbitRadius,
-            0,
-            Math.sin(angle) * orbitRadius
-          )
-        );
-      }
-
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      const material = new THREE.LineBasicMaterial({
-        color: 0x00d4ff,
-        transparent: true,
-        opacity: 0.3
-      });
-      orbitLine = new THREE.Line(geometry, material);
-      scene.add(orbitLine);
-    }
-
-    function createStars() {
-      const geometry = new THREE.BufferGeometry();
-      const starCount = 1000;
-      const positions = new Float32Array(starCount * 3);
-
-      for (let i = 0; i < starCount * 3; i += 3) {
-        positions[i] = (Math.random() - 0.5) * 200;
-        positions[i + 1] = (Math.random() - 0.5) * 200;
-        positions[i + 2] = (Math.random() - 0.5) * 200;
-      }
-
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-      const material = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 0.1,
-        sizeAttenuation: true
-      });
-
-      const stars = new THREE.Points(geometry, material);
-      scene.add(stars);
-    }
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    function onMouseMove(event) {
-      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-    }
-
-    function onMouseWheel(event) {
-      camera.position.z += event.deltaY * 0.001;
-      camera.position.z = Math.max(1.5, Math.min(5, camera.position.z));
-    }
-
-    function onWindowResize() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      // Rotate Earth
-      earth.rotation.y += 0.001;
-
-      // Smooth mouse follow for tilt
-      earth.rotation.x += (mouseY * 0.5 - earth.rotation.x) * 0.05;
-      earth.rotation.z += (mouseX * 0.3 - earth.rotation.z) * 0.05;
-
-      renderer.render(scene, camera);
-    }
-
-    // Initialize when page loads
-    window.addEventListener('load', init);
-  </script>
+<script>
+  const toggleBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
 </body>
 </html>
